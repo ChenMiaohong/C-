@@ -3,6 +3,7 @@
 #include<unistd.h>
 using namespace std;
 class Human{
+
 public:
     virtual void eating(void){cout<<"use hand to eat"<<endl;}
     virtual ~Human(){cout<<"~Human"<<endl;}
@@ -25,19 +26,22 @@ public:
 };
 void test_eating(Human &h)
 {
+    Englishman *pe;
+    Chinese *pc;
     h.eating();
+    if(pe=dynamic_cast<Englishman*>(&h))
+        cout<<"This human is Englishman"<<endl;
+    if(pc=dynamic_cast<Chinese *>(&h))
+        cout<<"This human is englishman"<<endl;
 }
-void test_return(Human&h)
-{
-    h.test();
-}
+
 int main(int argc,char **argv)
 {
     Human h;
     Englishman e;
     Chinese c;
-    test_return(h);
-    test_return(e);
-    test_return(c);
+    test_eating(h);
+    test_eating(e);
+    test_eating(c);
     return 0;
 }
